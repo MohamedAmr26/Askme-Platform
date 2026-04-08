@@ -1,7 +1,7 @@
 #include <iostream>
 #include <map>
 
-#include "models/user.h"
+#include "Models/user.h"
 
 #define ds map<string, string>
 #define acc pair<string, string>
@@ -17,10 +17,9 @@ class AuthenticationService{
             return accounts.count(username)? accounts[username] : "";
         }
         bool Create_account(string username, string password){
-            if (Get_password(username)) return false;
+            if (Check_account(username)) return false;
 
             accounts[username] = password;
-            cout << accounts[username]
             return true;
         }
 
@@ -31,13 +30,11 @@ class AuthenticationService{
         bool Check_account(string username){
             return accounts.count(username);
         }
-        pair<bool, User&> login(string username, string password){
-            User my_user = new User(username);
+        optional<User*> login(string username, string password){
             if (Check_account(username) && Get_password(username) == password){
-                return true;
+                return new User(username);
             }
-            
-            return {true, my_user};
+            return nullopt;
         }
         bool Register_user(string username, string password){
             if (Check_account(username)) return false;
@@ -49,7 +46,23 @@ class AuthenticationService{
         }
 };
 
+/*
+optional in c++:
 
-int main(){
+auto result = login("alice", "1234");
 
+// Method 1: check then unwrap
+if (result.has_value()) {
+    result->doSomething();   // access like a pointer
+    result.value().doSomething();  // or explicitly
 }
+
+// Method 2: shorthand (most common)
+if (result) {
+    result->doSomething();
+}
+
+// Method 3: default fallback
+User u = result.value_or(User("guest"));
+
+*/
