@@ -24,17 +24,18 @@ class AuthenticationService{
         }
 
     public:
+        AuthenticationService(){}
         AuthenticationService(ds accounts) : accounts(accounts){
 
         }
         bool Check_account(string username){
             return accounts.count(username);
         }
-        optional<User*> login(string username, string password){
+        string login(string username, string password){
             if (Check_account(username) && Get_password(username) == password){
-                return new User(username);
+                return username;
             }
-            return nullopt;
+            return "";
         }
         bool Register_user(string username, string password){
             if (Check_account(username)) return false;

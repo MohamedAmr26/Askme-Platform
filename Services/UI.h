@@ -15,6 +15,8 @@ class UI{
         virtual int InitialPage(string username, int id) = 0; // press 0 to exit
 };
 
+
+
 #endif
 
 // try const functions
