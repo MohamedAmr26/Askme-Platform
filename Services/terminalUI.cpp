@@ -5,7 +5,7 @@ using namespace std;
 
 class terminalUI : public UI
 {
-
+    // add verfecation class later
     public:
         int WelcomePage()                                       
         {                                       
@@ -43,6 +43,24 @@ class terminalUI : public UI
         }
 
         pair<string, string> LoginPage(){
-            
+            cout << "|| Ask me platform ||" << endl;
+            string U_name ;
+            string U_password ;
+            cout << "Your User name: " << endl;
+            cin >> U_name ;
+            cout << "Password: " << endl;
+            return U_account = make_pair(U_name, U_password) 
+        }
+
+        int InitialPage(string username, int id){
+
+            cout << " || Main Page || " << endl; // adjustments later , press 0 to exit
+
+            return 1;
+        }
+
+        void Error_massage(){
+            cout << "--There is an Error with your login/register please try again--"
+            return;
         }
 };
