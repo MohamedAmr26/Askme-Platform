@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Services\UI.h"
+#include "UI/UI.h"
 
 using namespace std;
 
@@ -44,5 +44,9 @@ class terminalUI : public UI
 
         pair<string, string> LoginPage(){
             
+        }
+
+        virtual UI* Clone(){
+            return new terminalUI();
         }
 };
