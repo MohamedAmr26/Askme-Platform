@@ -46,6 +46,10 @@ class terminalUI : public UI
             
         }
 
+        int InitialPage(string username, int id){
+            
+        }
+
         virtual UI* Clone(){
             return new terminalUI();
         }
